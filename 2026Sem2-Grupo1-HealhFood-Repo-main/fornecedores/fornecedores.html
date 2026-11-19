@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Food | Restaurante parceiro</title>
+<link rel="stylesheet" href="restaurantes.css">
+<script src="restaurantes.js" defer></script>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-symbol">✚</div>
+    <div><strong>Free Food</strong><small>Área do restaurante parceiro</small></div>
+  </div>
+  <p class="nav-label">MEU RESTAURANTE</p>
+  <nav aria-label="Menu principal">
+    <button class="nav-link active" data-page="dashboard">▦ <span>Visão geral</span></button>
+    <button class="nav-link" data-page="restaurante">▣ <span>Meu restaurante</span></button>
+    <button class="nav-link" data-page="produtos">◈ <span>Meu cardápio</span></button>
+    <button class="nav-link" data-page="pedidos">▤ <span>Meus pedidos</span></button>
+    <button class="nav-link" data-page="relatorios">◫ <span>Meus resultados</span></button>
+  </nav>
+  <div class="sidebar-bottom">
+    <span class="avatar">FF</span>
+    <div><strong id="nome-perfil">Meu restaurante</strong><small>Restaurante parceiro</small></div>
+  </div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <div><h1 id="page-title">Visão geral</h1><p>Cuide do seu restaurante, do cardápio e de cada pedido.</p></div>
+    <span class="demo">● Protótipo acadêmico</span>
+  </header>
+
+  <section class="page active" id="dashboard">
+    <div class="hero">
+      <span>FREE FOOD • ALIMENTAÇÃO SAUDÁVEL</span>
+      <h2>Seu restaurante faz parte dessa escolha.</h2>
+      <p>A Free Food aproxima pessoas de restaurantes que oferecem refeições saudáveis e informações claras sobre os alimentos. Apresente seus pratos, informe os ingredientes e acompanhe os pedidos do seu estabelecimento.</p>
+      <button class="hero-button" data-go="restaurante" type="button">Cadastrar meu restaurante →</button>
+    </div>
+    <div class="stats">
+      <article class="stat"><span>Comidas cadastradas</span><strong id="stat-produtos">0</strong><small>Itens do seu cardápio</small></article>
+      <article class="stat"><span>Pedidos em andamento</span><strong id="stat-andamento">0</strong><small>Do recebimento à entrega</small></article>
+      <article class="stat"><span>Pedidos concluídos</span><strong id="stat-concluidos">0</strong><small>Entregas e retiradas finalizadas</small></article>
+      <article class="stat"><span>Vendas concluídas</span><strong id="stat-vendas">R$ 0,00</strong><small>Valor bruto registrado</small></article>
+    </div>
+    <div class="two-columns">
+      <article class="panel">
+        <div class="panel-heading"><h3>Sobre a Free Food</h3></div>
+        <p class="body-copy">Acreditamos que escolher uma refeição deve ser simples. Nosso propósito é dar visibilidade à comida saudável e ajudar cada pessoa a conhecer melhor o que está no prato.</p>
+        <p class="body-copy">Como restaurante parceiro, você apresenta seu negócio, organiza seu cardápio e acompanha o atendimento. Informe ingredientes, alergênicos e cuidados no preparo com clareza.</p>
+        <button class="text-button" data-go="produtos" type="button">Montar meu cardápio →</button>
+      </article>
+      <article class="panel">
+        <div class="panel-heading"><h3>Pedidos recentes</h3><button class="text-button" data-go="pedidos" type="button">Ver pedidos →</button></div>
+        <div id="recentes" class="recent-list"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="page" id="restaurante">
+    <div class="section-title"><div><h2>Meu restaurante parceiro</h2><p>Cadastre e atualize os dados do seu próprio estabelecimento.</p></div></div>
+    <div class="panel form-panel">
+      <div class="panel-heading"><h3>Dados do restaurante</h3></div>
+      <form id="restaurante-form">
+        <div class="form-grid">
+          <label>Nome do restaurante <input name="nome" maxlength="100" required placeholder="Como seu restaurante é conhecido"></label>
+          <label>Razão social <input name="razao" maxlength="120" placeholder="Nome empresarial"></label>
+          <label>CNPJ (opcional) <input name="cnpj" maxlength="18" inputmode="numeric" placeholder="00.000.000/0000-00"></label>
+          <label>Responsável <input name="responsavel" maxlength="100" required></label>
+          <label>Telefone / WhatsApp <input name="telefone" maxlength="30" required></label>
+          <label>E-mail comercial <input name="email" type="email" maxlength="140" required></label>
+          <label>Cidade <input name="cidade" maxlength="100" required></label>
+          <label>UF <input name="uf" maxlength="2" minlength="2" pattern="[A-Za-z]{2}" required placeholder="SP"></label>
+          <label class="wide">Endereço completo <input name="endereco" maxlength="250" required placeholder="Rua, número, bairro e complemento"></label>
+          <label>Funcionamento <input name="horario" maxlength="150" required placeholder="Segunda a sábado, das 11h às 22h"></label>
+          <label>Atendimento <select name="atendimento"><option>Aberto para pedidos</option><option>Temporariamente fechado</option></select></label>
+          <label>Modalidades oferecidas <select name="modalidade"><option>Entrega e retirada</option><option>Somente entrega</option><option>Somente retirada</option></select></label>
+          <label>Região de entrega <input name="regiao" maxlength="200" placeholder="Bairros atendidos ou apenas retirada"></label>
+          <label class="wide">Sobre o restaurante <textarea name="descricao" maxlength="1000" rows="3" placeholder="Conte sobre sua cozinha e sua proposta de alimentação"></textarea></label>
+        </div>
+        <div class="form-actions"><button class="primary-button" type="submit">Salvar meu restaurante</button></div>
+      </form>
+      <p class="helper">Este cadastro organiza seu perfil no protótipo; não representa aprovação de parceria pela Free Food.</p>
+    </div>
+  </section>
+
+  <section class="page" id="produtos">
+    <div class="section-title"><div><h2>Meu cardápio</h2><p>Cadastre as comidas e bebidas do seu restaurante.</p></div></div>
+    <div class="panel form-panel" id="produto-area">
+      <div class="panel-heading"><h3 id="produto-titulo">Cadastrar comida ou bebida</h3></div>
+      <form id="produto-form">
+        <div class="form-grid">
+          <label>Nome <input name="nome" maxlength="100" required placeholder="Ex.: Bowl de legumes com arroz integral"></label>
+          <label>Categoria <select name="categoria"><option>Refeição</option><option>Lanche</option><option>Bebida</option><option>Sobremesa</option></select></label>
+          <label>Preço em R$ <input name="preco" type="number" min="0.01" max="100000" step="0.01" required></label>
+          <label>Porção / volume <input name="porcao" maxlength="80" required placeholder="Ex.: 400 g ou 300 ml"></label>
+          <label class="wide">Descrição <textarea name="descricao" rows="2" maxlength="1000" required placeholder="Apresente o prato e os acompanhamentos"></textarea></label>
+          <label class="wide">Ingredientes completos <textarea name="ingredientes" rows="3" maxlength="1500" required placeholder="Inclua molhos, temperos e acompanhamentos"></textarea></label>
+          <label class="wide">Alergênicos e contato cruzado <textarea name="alergenicos" rows="2" maxlength="1000" required placeholder="Informe o que contém, pode conter e cuidados no preparo"></textarea></label>
+          <label>Característica declarada <select name="perfil"><option>Não informado</option><option>Vegetariano</option><option>Vegano</option><option>Sem ingredientes com glúten</option><option>Sem ingredientes com lactose</option></select></label>
+          <label>Tempo de preparo (minutos) <input name="tempo" type="number" min="1" max="1440" step="1" required></label>
+          <label>Disponibilidade <select name="disponibilidade"><option>Disponível</option><option>Indisponível</option></select></label>
+          <label>Informação nutricional (opcional) <input name="nutricao" maxlength="300" placeholder="Ex.: valores por porção, quando disponíveis"></label>
+        </div>
+        <div class="form-actions"><button type="button" class="outline-button" id="cancelar-produto">Limpar / cancelar edição</button><button type="submit" class="primary-button" id="salvar-produto">Salvar produto</button></div>
+      </form>
+      <p class="helper">As características são declaradas pelo restaurante. Para restrições alimentares, informe também possíveis contatos cruzados; o cadastro não certifica segurança para consumo.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-heading"><h3>Comidas e bebidas cadastradas</h3></div>
+      <div class="filters"><input id="busca-produto" type="search" aria-label="Buscar no cardápio" placeholder="Buscar nome ou ingrediente..."><select id="filtro-produto" aria-label="Filtrar disponibilidade"><option value="">Todas as disponibilidades</option><option>Disponível</option><option>Indisponível</option></select></div>
+      <div class="table-scroll"><table><thead><tr><th>Produto</th><th>Preço</th><th>Categoria</th><th>Disponibilidade</th><th>Ações</th></tr></thead><tbody id="produtos-tabela"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="page" id="pedidos">
+    <div class="section-title"><div><h2>Meus pedidos</h2><p>Registre pedidos do seu restaurante e acompanhe cada etapa.</p></div></div>
+    <div class="panel">
+      <div class="panel-heading"><h3>Registrar pedido</h3></div>
+      <form id="pedido-form">
+        <div class="form-grid">
+          <label>Cliente <input name="cliente" maxlength="100" required></label>
+          <label>Telefone <input name="telefone" maxlength="30" required></label>
+          <label>Modalidade <select name="modalidade" id="pedido-modalidade"><option>Entrega</option><option>Retirada</option></select></label>
+          <label>Endereço de entrega <input name="endereco" id="pedido-endereco" maxlength="250" required></label>
+          <label class="wide">Observações do cliente <textarea name="observacoes" rows="2" maxlength="1000" placeholder="Preferências e informações para o atendimento"></textarea></label>
+        </div>
+        <div class="panel-heading item-heading"><h3>Itens do pedido</h3><button class="outline-button" type="button" id="adicionar-item">+ Adicionar item</button></div>
+        <div id="itens-pedido"></div>
+        <p class="order-total">Total: <strong id="pedido-total">R$ 0,00</strong></p>
+        <div class="form-actions"><button class="primary-button" type="submit">Registrar pedido recebido</button></div>
+      </form>
+      <p class="helper">Registro manual de demonstração. Os pedidos não são recebidos de outro site nem enviados a um serviço de entrega.</p>
+    </div>
+    <div class="panel">
+      <div class="panel-heading"><h3>Acompanhar pedidos</h3></div>
+      <div class="filters"><input id="busca-pedido" type="search" aria-label="Buscar pedido" placeholder="Buscar cliente ou número..."><select id="filtro-pedido" aria-label="Filtrar etapa"><option value="">Todas as etapas</option><option>Recebido</option><option>Em preparo</option><option>Pronto</option><option>Saiu para entrega</option><option>Concluído</option><option>Cancelado</option></select></div>
+      <div class="table-scroll"><table><thead><tr><th>Pedido</th><th>Cliente</th><th>Total</th><th>Modalidade</th><th>Etapa</th><th>Ações</th></tr></thead><tbody id="pedidos-tabela"></tbody></table></div>
+    </div>
+    <div class="panel" id="caminho-pedido" hidden aria-live="polite"></div>
+  </section>
+
+  <section class="page" id="relatorios">
+    <div class="section-title"><div><h2>Meus resultados</h2><p>Resumo dos pedidos registrados pelo seu restaurante.</p></div><button class="outline-button" id="exportar-pedidos" type="button">Exportar pedidos CSV</button></div>
+    <div class="stats">
+      <article class="stat"><span>Pedidos registrados</span><strong id="report-total">0</strong></article>
+      <article class="stat"><span>Concluídos</span><strong id="report-concluidos">0</strong></article>
+      <article class="stat"><span>Cancelados</span><strong id="report-cancelados">0</strong></article>
+      <article class="stat"><span>Ticket médio concluído</span><strong id="report-ticket">R$ 0,00</strong></article>
+    </div>
+    <div class="panel"><div class="panel-heading"><h3>Pedidos por etapa</h3></div><div id="categorias-grafico" class="category-chart"></div></div>
+  </section>
+  <footer>Free Food © 2026 • Área do restaurante parceiro • Dados salvos apenas neste navegador.</footer>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
